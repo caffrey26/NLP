@@ -1,6 +1,5 @@
 PROCESSING SENTENCE: fish people fish tanks
 
-
 SPAN: fish
 P(N fish) = 0.2
 P(V fish) = 0.6

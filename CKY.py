@@ -109,20 +109,21 @@ unary = {} #mapping a tuple of (non-terminal,non-teminal) unary rule to correspo
 terminal = {} #mapping a tuple of (non-terminal, word) to the corresponding probability
 
 with open(sys.argv[1], 'r') as f: #read the grammar
+    for line in f: #read all the non-terminals from the grammar. They will appear on the extreme left of all lines
+      line = line.rstrip('\n')
+      tokens = line.split()
+      non_terminals.add(tokens[0])
+    
+with open(sys.argv[1], 'r') as f: #read the grammar
     for line in f:
+      line = line.rstrip('\n')
       tokens = line.split()
       if len(tokens) == 4: #this is a binary
-        non_terminals.add(tokens[0])
-        non_terminals.add(tokens[1])
-        non_terminals.add(tokens[2])
         binary[ (tokens[0],tokens[1],tokens[2]) ] = tokens[3]
       if len(tokens) == 3: #this can be a unary, or a terminal
-        if tokens[1].isupper(): #unary
-            non_terminals.add(tokens[0])
-            non_terminals.add(tokens[1])
+        if tokens[1] in non_terminals: #this is a unary
             unary[ (tokens[0],tokens[1]) ] =  tokens[2]
         else:#terminal
-            non_terminals.add(tokens[0])
             terminal[ (tokens[0],tokens[1]) ] = tokens[2]
             
 #TODO handle read exception
@@ -136,9 +137,13 @@ with open(sys.argv[1], 'r') as f: #read the grammar
 file = open("output.txt", 'w')
 
 with open(sys.argv[2], 'r') as f: #read the sentences
+    c = 0
     for line in f:
-        # print line
-        file.write("PROCESSING SENTENCE: "+ line + "\n")
+        line = line.rstrip('\n')
+        c = c+1
+        if(c > 1):
+            file.write("\n\n\n")
+        file.write("PROCESSING SENTENCE: "+ line)
         #get list of words from sentence
         words = line.split()
         process_CKY(words,binary,unary,terminal, non_terminals, file)
