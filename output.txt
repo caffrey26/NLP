@@ -1,0 +1,60 @@
+PROCESSING SENTENCE: fish people fish tanks
+
+
+SPAN: fish
+P(N fish) = 0.2
+P(V fish) = 0.6
+P(VP) = 0.06 (BackPointer = V)
+P(S) = 0.006 (BackPointer = VP)
+P(NP) = 0.14 (BackPointer = N)
+
+SPAN: people
+P(N people) = 0.5
+P(V people) = 0.1
+P(VP) = 0.01 (BackPointer = V)
+P(S) = 0.001 (BackPointer = VP)
+P(NP) = 0.35 (BackPointer = N)
+
+SPAN: fish
+P(N fish) = 0.2
+P(V fish) = 0.6
+P(VP) = 0.06 (BackPointer = V)
+P(S) = 0.006 (BackPointer = VP)
+P(NP) = 0.14 (BackPointer = N)
+
+SPAN: tanks
+P(N tanks) = 0.2
+P(V tanks) = 0.3
+P(VP) = 0.03 (BackPointer = V)
+P(S) = 0.003 (BackPointer = VP)
+P(NP) = 0.14 (BackPointer = N)
+
+SPAN: fish people 
+P(VP) = 0.105 (BackPointer = (1, V, NP)
+P(S) = 0.0105 (BackPointer = VP)
+P(NP) = 0.0049 (BackPointer = (1, NP, NP)
+
+SPAN: people fish 
+P(VP) = 0.007 (BackPointer = (2, V, NP)
+P(S) = 0.0189 (BackPointer = (2, NP, VP)
+P(NP) = 0.0049 (BackPointer = (2, NP, NP)
+
+SPAN: fish tanks 
+P(VP) = 0.042 (BackPointer = (3, V, NP)
+P(S) = 0.0042 (BackPointer = VP)
+P(NP) = 0.00196 (BackPointer = (3, NP, NP)
+
+SPAN: fish people fish 
+P(VP) = 0.00147 (BackPointer = (1, V, NP)
+P(S) = 0.000882 (BackPointer = (1, NP, VP)
+P(NP) = 0.0000686 (BackPointer = (1, NP, NP)
+
+SPAN: people fish tanks 
+P(VP) = 0.000098 (BackPointer = (2, V, NP)
+P(S) = 0.01323 (BackPointer = (2, NP, VP)
+P(NP) = 0.0000686 (BackPointer = (3, NP, NP)
+
+SPAN: fish people fish tanks 
+P(VP) = 0.00002058 (BackPointer = (1, V, NP)
+P(S) = 0.00018522 (BackPointer = (2, NP, VP)
+P(NP) = 0.0000009604 (BackPointer = (1, NP, NP)
